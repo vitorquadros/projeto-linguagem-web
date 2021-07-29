@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+img {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+main {
+  width: 80%;
+  margin: 20px auto;
+  background-color: gray;
+  border-radius: 15px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  margin: 30px;
+}
+
+.gerenciar-categorias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.gerenciar-categorias form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.gerenciar-categorias form input {
+  margin-bottom: 5px;
+}
+
+.gerenciar-categorias form input[type='file'] {
+  text-align-last: center;
+}
+
+.gerenciar-categorias form button {
+  margin-top: 5px;
+  padding: 3px 5px;
+}
+
+.listar-categorias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+.container-produtos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-categorias .categoria {
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 20px 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

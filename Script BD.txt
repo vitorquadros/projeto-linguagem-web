@@ -1,0 +1,29 @@
+CREATE TABLE usuarios (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    senha VARCHAR(50) NOT NULL,
+    admin BOOLEAN DEFAULT false,
+    avatar VARCHAR(100),
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE categorias (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    descricao VARCHAR(150),
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE produtos (
+    id INT NOT NULL AUTO_INCREMENT,
+    id_categoria NOT NULL INT,
+    nome VARCHAR(100) NOT NULL,
+    descricao VARCHAR(200) NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    imagem VARCHAR(100),
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_categoria) REFERENCES categorias(id) 
+);
+
+
