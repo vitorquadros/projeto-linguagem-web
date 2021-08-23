@@ -1,14 +1,5 @@
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-}
-
 img {
-  width: 200px;
+  width: 150px;
   margin-bottom: 10px;
 }
 
@@ -23,7 +14,13 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 50px;
-  margin: 30px;
+  margin: 0 30px;
+}
+
+/* CATEGORIAS */
+
+.container-categorias {
+  margin-bottom: 30px;
 }
 
 .gerenciar-categorias {
@@ -44,15 +41,6 @@ main {
   margin-bottom: 5px;
 }
 
-.gerenciar-categorias form input[type='file'] {
-  text-align-last: center;
-}
-
-.gerenciar-categorias form button {
-  margin-top: 5px;
-  padding: 3px 5px;
-}
-
 .listar-categorias {
   display: flex;
   flex-direction: column;
@@ -61,13 +49,77 @@ main {
   overflow-y: scroll;
 }
 
-.container-produtos {
+.container-categorias .categoria {
+  margin: 15px 10px;
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-.container-categorias .categoria {
+.categoria p {
+  margin-right: 5px;
+}
+
+/* BOTÕES FUNÇÕES */
+
+.botaoFuncao {
+  margin-top: 5px;
+  padding: 3px 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.botaoFuncao:hover {
+  opacity: 70%;
+}
+
+.botaoEditar {
+  background-color: #cccc00;
+}
+
+.botaoDeletar {
+  background-color: #cc0000;
+}
+
+.botaoAdicionar {
+  margin-top: 5px;
+  padding: 3px 5px;
+}
+
+.botaoPesquisa {
+  padding: 1px 5px;
+}
+
+/* PRODUTOS */
+
+.container-produtos {
+  margin-bottom: 30px;
+}
+
+.gerenciar-produtos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.listar-produtos {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 90vh;
+  align-items: flex-start;
+  overflow-y: scroll;
+}
+
+.listar-produtos p {
+  text-align: center;
+}
+
+#produtos-count {
+  margin-bottom: 10px;
+}
+
+.container-produtos .produto {
   border: 1px solid black;
   border-radius: 15px;
   margin: 20px 10px;
@@ -75,4 +127,45 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.semProdutos {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.gerenciar-produtos form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.gerenciar-produtos form input {
+  margin-bottom: 5px;
+}
+
+.gerenciar-produtos form select {
+  margin-bottom: 5px;
+}
+
+.pesquisa {
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+.pesquisar {
+  margin-top: 5px;
+}
+
+#erros-produtos,
+#erros-categorias {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#erros-produtos strong,
+#erros-categorias strong {
+  color: darkred;
 }

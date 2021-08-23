@@ -4,7 +4,7 @@ function criarCategoria($conexao,$array){
     $query = $conexao->prepare("INSERT INTO categorias (nome, descricao) VALUES (?, ?)");
     $resultado = $query->execute($array);
     return $resultado;
-  }catch(PDOException $e) {
+  } catch(PDOException $e) {
     echo 'Error: ' . $e->getMessage();
   }
 }
@@ -15,7 +15,7 @@ function listarCategorias($conexao){
     $query->execute();
     $categorias = $query->fetchAll();
     return $categorias;
-  }catch(PDOException $e) {
+  } catch(PDOException $e) {
     echo 'Error: ' . $e->getMessage();
   }  
 }
@@ -26,7 +26,7 @@ function editarCategoria($conexao, $array){
     $query = $conexao->prepare("UPDATE categorias SET nome = ?, descricao = ? WHERE id = ?");
     $resultado = $query->execute($array);   
     return $resultado;
-  }catch(PDOException $e) {
+  } catch(PDOException $e) {
     echo 'Error: ' . $e->getMessage();
   }
 }
@@ -37,7 +37,7 @@ function deletarCategoria($conexao, $array){
     $query = $conexao->prepare("DELETE FROM categorias WHERE id = ?");
     $resultado = $query->execute($array);   
     return $resultado;
-  }catch(PDOException $e) {
+  } catch(PDOException $e) {
     echo 'Error: ' . $e->getMessage();
   }
   
@@ -50,11 +50,8 @@ function buscarCategoria($conexao,$array){
     if($query->execute($array)){
       $categoria = $query->fetch();
       return $categoria;
-    }
-    else{
-      return false;
-    }
-  }catch(PDOException $e) {
+    } else return false;
+  } catch(PDOException $e) {
     echo 'Error: ' . $e->getMessage();
   }  
 }

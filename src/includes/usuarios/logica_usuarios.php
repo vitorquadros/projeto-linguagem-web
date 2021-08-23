@@ -1,6 +1,15 @@
 <?php
+
 include_once('../conexao.php');
 include_once('./funcoes_usuarios.php');
+include_once('../produtos/funcoes_produtos.php');
+
+ //debug
+  function console_log( $data ){
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
+  }
 
 # Cadastrar novo usuário
 
@@ -8,22 +17,31 @@ if (isset($_POST['cadastrar'])) {
   $nome = $_POST['nome'];
   $email = $_POST['email'];
   $senha = $_POST['senha'];
-  $array = array($nome, $email, $senha);
+  $imagem = $_FILES['imagem'];
 
-  cadastrarUsuario($conexao, $array);
+
+
+  if (!empty($imagem['name'])) {
+    $nome_imagem = upload($imagem, 'usuarios');
+    $array = array($nome, $email, $senha, $nome_imagem);
+  } else {
+    $array = array($nome, $email, $senha);
+  }
+
+  $emailArray = array($email);
+  if (!verificarEmail($conexao, $emailArray)) {
+    cadastrarUsuario($conexao, $array);
+  }
 
   $arrayLogin = array($email, $senha);
-  $usuario = fazerLogin($conexao,$arrayLogin);
+  $usuario = fazerLogin($conexao, $arrayLogin);
 
   if ($usuario) {
-    session_start();
-    $_SESSION['logado'] = true;
-    $_SESSION['idUsuario'] = $usuario['id'];
-    $_SESSION['nome'] = $usuario['nome'];
-    $_SESSION['email'] = $usuario['email'];
-
-    header('location: ../../index.php');
-  } else header('location: ../../login.php');
+    salvarSessao($usuario);
+    header('location:../../index.php');
+  } else {
+    header('location:../../cadastrar_usuario.php');
+  }
 }
 
 # Fazer login
@@ -32,17 +50,18 @@ if (isset($_POST['entrar'])) {
   $email = $_POST['email'];
   $senha = $_POST['senha'];
   $array = array($email, $senha);
-  $usuario = fazerLogin($conexao,$array);
+  $usuario = fazerLogin($conexao, $array);
 
   if ($usuario) {
-    session_start();
-    $_SESSION['logado'] = true;
-    $_SESSION['idUsuario'] = $usuario['id'];
-    $_SESSION['nome'] = $usuario['nome'];
-    $_SESSION['email'] = $usuario['email'];
-
+    $_SESSION['erro'] = false;
+    salvarSessao($usuario);
     header('location: ../../index.php');
-  } else header('location: ../../login.php');
+  } else {
+    session_start();
+    $_SESSION['erro'] = true;
+    header('location: ../../login.php');
+   
+  }
 }
 
 # Encerrar sessão
@@ -60,11 +79,32 @@ if (isset($_POST['alterar'])) {
   $nome = $_POST['nome'];
   $email = $_POST['email'];
   $senha = $_POST['senha'];
-  $array = array($nome, $email, $senha, $id);
+  $imagem = $_FILES['imagem'];
 
+  if (!empty($imagem['name'])) {
+    $nome_imagem = upload($imagem, 'usuarios');
+    $array = array($nome, $email, $senha, $nome_imagem, $id);
+  } else {
+    $array = array($nome, $email, $senha, $id);
+  }
+  
   editarUsuario($conexao, $array);
-
+  
   session_start();
   session_destroy();
   header('location:../../login.php');
 }
+
+if (isset($_POST['deletarPerfil'])) {
+  $id = $_POST['idUsuario'];
+  $array = array($id);
+
+  if ($id) {
+    deletarUsuario($conexao, $array);
+    session_start();
+    session_destroy();
+    header('location:../../login.php');
+  }
+}
+
+?>

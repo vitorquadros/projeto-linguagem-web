@@ -1,0 +1,90 @@
+main {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100vh;
+  background-color: gray;
+  margin: 20px auto;
+  border-radius: 15px;
+}
+
+.produtos {
+  height: 90%;
+  overflow-y: scroll;
+  margin: 20px 0;
+}
+
+#sem-itens {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#adicionar {
+  margin-top: 10px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  padding: 3px 5px;
+  background-color: white;
+}
+
+#adicionar:hover {
+  background-color: gray;
+}
+
+img {
+  width: 100px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+tr {
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+td {
+  padding: 20px 0;
+}
+
+#form-acoes button {
+  padding: 3px;
+  border-radius: 5px;
+}
+
+#form-acoes button:not(:last-child) {
+  margin-right: 4px;
+}
+
+#form-acoes button:hover {
+  background: gray;
+}
+
+.finalizar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.finalizar button {
+  width: 150px;
+  padding: 3px 0;
+  margin-top: 5px;
+}
+
+#total {
+  font-size: 1.5em;
+}
+
+#limpar {
+  background: none;
+  border: none;
+  text-decoration: underline;
+}

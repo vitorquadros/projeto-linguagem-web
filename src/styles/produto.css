@@ -1,0 +1,38 @@
+main {
+  width: 80%;
+  margin: 20px auto;
+  background-color: gray;
+  border-radius: 15px;
+}
+
+.produto {
+  display: flex;
+}
+
+img {
+  width: 250px;
+  margin: 30px;
+}
+
+#title {
+  margin-top: 30px;
+  margin-left: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#descricao {
+  margin: 10px 30px;
+}
+
+#preco {
+  margin-top: 20px;
+  margin-left: 30px;
+  font-weight: bold;
+}
+
+.info button {
+  margin-left: 30px;
+  margin-top: 5px;
+  padding: 3px 5px;
+}

@@ -1,17 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-}
-
 .container {
   width: 100vw;
   height: 100vh;
   background-color: #b3b3b3;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -43,15 +35,11 @@ main form input {
   width: 80%;
   height: 25px;
   margin: 5px 0;
-  border: 2px solid black;
-  border-radius: 10px;
   padding-left: 5px;
 }
 
 main form button {
   padding: 3px 5px;
-  border: 1px solid black;
-  border-radius: 5px;
   margin: 10px 0px;
 }
 
@@ -69,4 +57,21 @@ main div {
 main div a {
   margin-bottom: 10px;
   text-decoration: underline;
+}
+
+#voltar {
+  text-decoration: none;
+}
+
+#voltar:hover {
+  text-decoration: underline;
+}
+
+#erros {
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+#erros strong {
+  color: darkred;
 }
