@@ -46,6 +46,7 @@
   <body>
     <main>
       <h4>Produtos</h4>
+      <!-- PESQUISAR / FILTRAR PRODUTOS -->
       <div class="pesquisa">
         <form action="./includes/produtos/logica_produtos.php" method="GET">
           <input type="hidden" name="page" value="index">
@@ -75,7 +76,7 @@
 
       </div>
 
-
+      <!-- LISTAR PRODUTOS -->
       <div <?php if ($produtos) {?> class="container-produtos" <?php } else {?> id="semProdutos" <?php } ?>>
         <?php if (count($produtos) < 1) { ?>
           <p>Nenhum produto encontrado.</p>

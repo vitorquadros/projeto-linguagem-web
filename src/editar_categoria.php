@@ -12,21 +12,25 @@
     include('./includes/componentes/header.php');
     include_once('./includes/conexao.php');
     include_once('./includes/categorias/funcoes_categorias.php');
+
+    if (!isset($_SESSION['categoriaEdit'])) header('location:index.php');
+    $_SESSION['categoria'] = $_SESSION['categoriaEdit'];
+    unset($_SESSION['categoriaEdit']);
   ?>
-  <title>Editando | <?php echo $_SESSION['categoriaEdit']['nome']; ?></title>
+  <title>Editando | <?php echo  $_SESSION['categoria']['nome']; ?></title>
 </head>
 <body>
   
  <main>
     <div class="editar">
-      <p id="titulo">Você está editando a categoria <strong><?php echo $_SESSION['categoriaEdit']['nome']; ?></strong></p>
+      <p id="titulo">Você está editando a categoria <strong><?php echo  $_SESSION['categoria']['nome']; ?></strong></p>
 
       <form action="./includes/categorias/logica_categorias.php" method="post" onsubmit="validate(event)">
-        <input type="hidden" name="id" value="<?php echo $_SESSION['categoriaEdit']['id']; ?>">
+        <input type="hidden" name="id" value="<?php echo  $_SESSION['categoria']['id']; ?>">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" value="<?php echo $_SESSION['categoriaEdit']['nome']; ?>">
+        <input type="text" name="nome" id="nome" value="<?php echo  $_SESSION['categoria']['nome']; ?>">
         <label for="descricao">Descrição</label>
-        <input type="text" name="desc" id="desc" value="<?php echo $_SESSION['categoriaEdit']['descricao']; ?>">
+        <input type="text" name="desc" id="desc" value="<?php echo  $_SESSION['categoria']['descricao']; ?>">
         <button type="submit" name="alterar">Editar</button>
       </form>
 

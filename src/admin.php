@@ -51,18 +51,20 @@
   ?>
 
 <body>
-
   <main>
   <div class="container">
+    <!-- CATEGORIAS -->
     <div class="container-categorias">
 
+      <!-- GERENCIAR CATEGORIAS -->
       <div class="gerenciar-categorias">
         <h4>Gerenciar Categorias</h4>
         <form action="./includes/categorias/logica_categorias.php" method="post" onsubmit="validateCategoria(event)">
-          <label for="">Nome</label>
+
+          <label for="nome">Nome</label>
           <input type="text" id="nomeCategoria" name="nome">
 
-          <label for="">Descrição</label>
+          <label for="desc">Descrição</label>
           <input type="text" id="descCategoria" name="desc">
          
           <button type="submit" class="botaoAdicionar" name="cadastrar">+ Nova categoria</button>
@@ -70,7 +72,7 @@
         <div id="erros-categorias"></div>
       </div>
       
-
+      <!-- LISTAR CATEGORIAS -->
       <div class="listar-categorias">
       <?php
         foreach(array_reverse($categorias) as $categoria) { ?>
@@ -89,8 +91,9 @@
     </div>
 
     <!-- PRODUTOS -->
-
     <div class="container-produtos">
+
+          <!-- GERENCIAR PRODUTOS -->
       <div class="gerenciar-produtos">
         <h4>Gerenciar produtos</h4>
         <form action="./includes/produtos/logica_produtos.php" method="POST" enctype="multipart/form-data" onsubmit="validateProduto(event)">
@@ -115,7 +118,7 @@
       </div>
 
       <hr>
-
+      <!-- PESQUISAR / FILTRAR PRODUTOS -->
       <div class="pesquisa">
           <form action="./includes/produtos/logica_produtos.php" method="GET">
             <input type="hidden" name="page" value="admin">
@@ -144,6 +147,7 @@
           </form>
         </div>
          
+        <!-- LISTAR PRODUTOS -->
         <?php if (count($produtos) > 0) { ?>
         <p id="produtos-count">Produtos registrados: <strong><?php echo count($produtos); ?></strong></p>
         <?php } ?>

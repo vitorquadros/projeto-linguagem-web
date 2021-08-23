@@ -12,32 +12,37 @@
     include_once('./includes/conexao.php');
     include_once('./includes/categorias/funcoes_categorias.php');
     $categorias = listarCategorias($conexao);
+
+    if (!isset($_SESSION['produtoEdit'])) header('location:index.php');
+    $_SESSION['produtos'] = $_SESSION['produtoEdit'];
+    unset($_SESSION['produtoEdit']);
+
   ?>
-  <title>Editando | <?php echo $_SESSION['produtoEdit']['nome']; ?></title>
+  <title>Editando | <?php echo $_SESSION['produtos']['nome']; ?></title>
 </head>
 <body>
   
  <main>
     <div class="editar">
-      <p id="titulo">Você está editando o produto <strong><?php echo $_SESSION['produtoEdit']['nome']; ?></strong></p>
+      <p id="titulo">Você está editando o produto <strong><?php echo $_SESSION['produtos']['nome']; ?></strong></p>
 
       <form action="./includes/produtos/logica_produtos.php" method="POST" enctype="multipart/form-data" onsubmit="validate(event)">
-        <input type="hidden" name="id" value="<?php echo $_SESSION['produtoEdit']['id']; ?>">
+        <input type="hidden" name="id" value="<?php echo $_SESSION['produtos']['id']; ?>">
 
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" value="<?php echo $_SESSION['produtoEdit']['nome']; ?>">
+        <input type="text" name="nome" id="nome" value="<?php echo $_SESSION['produtos']['nome']; ?>">
 
         <label for="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" value="<?php echo $_SESSION['produtoEdit']['descricao']; ?>">
+        <input type="text" name="descricao" id="descricao" value="<?php echo $_SESSION['produtos']['descricao']; ?>">
 
         <label for="preco">Preço</label>
-        <input type="number" name="preco" id="preco" value="<?php echo $_SESSION['produtoEdit']['preco']; ?>">
+        <input type="number" name="preco" id="preco" value="<?php echo $_SESSION['produtos']['preco']; ?>">
 
         <label for="idCategoria">Categoria</label>
         <select name="idCategoria">
           <?php foreach($categorias as $categoria) { ?>
             <option value="<?php echo $categoria['id']; ?>"
-              <?php if ($categoria['id'] == $_SESSION['produtoEdit']['id_categoria']) { ?>
+              <?php if ($categoria['id'] == $_SESSION['produtos']['id_categoria']) { ?>
               selected
               <?php } ?>
               ><?php echo $categoria['nome']; ?>

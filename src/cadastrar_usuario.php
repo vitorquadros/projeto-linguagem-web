@@ -20,6 +20,7 @@
     <main>
       <h3>Fazer cadastro</h3>
       <form action="./includes/usuarios/logica_usuarios.php" method="POST" enctype="multipart/form-data" onsubmit="validate(event)">
+      
         <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome" placeholder="Seu nome">
 
